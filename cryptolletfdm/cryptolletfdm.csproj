@@ -12,6 +12,7 @@
     <PackageReference Include="Microcharts" Version="0.9.5.9" />
     <PackageReference Include="Microcharts.Forms" Version="0.9.5.9" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Application\" />
@@ -29,6 +30,15 @@
     <None Remove="Common\Models\" />
     <None Remove="Newtonsoft.Json" />
     <None Remove="Common\Controllers\" />
+    <None Remove="Modules\AddTransaction\" />
+    <None Remove="Common\Navigation\" />
+    <None Remove="Common\Converters\" />
+    <None Remove="Common\Validation\" />
+    <None Remove="sqlite-net-pcl" />
+    <None Remove="Common\Database\" />
+    <None Remove="Common\Extensions\" />
+    <None Remove="Common\Dialog\" />
+    <None Remove="Common\Network\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Application\" />
@@ -42,5 +52,13 @@
     <Folder Include="Common\Base\" />
     <Folder Include="Common\Models\" />
     <Folder Include="Common\Controllers\" />
+    <Folder Include="Modules\AddTransaction\" />
+    <Folder Include="Common\Navigation\" />
+    <Folder Include="Common\Converters\" />
+    <Folder Include="Common\Validation\" />
+    <Folder Include="Common\Database\" />
+    <Folder Include="Common\Extensions\" />
+    <Folder Include="Common\Dialog\" />
+    <Folder Include="Common\Network\" />
   </ItemGroup>
 </Project>

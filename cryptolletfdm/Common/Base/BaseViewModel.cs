@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace Cryptollet.Common.Base
+namespace cryptolletfdm.Common.Base
 {
     public abstract class ExtendedBindableObject : BindableObject
     {

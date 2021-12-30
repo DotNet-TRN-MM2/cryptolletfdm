@@ -1,10 +1,12 @@
 ﻿using System.Reflection;
 using Autofac;
+using cryptolletfdm.Common.Models;
+using cryptolletfdm.Common.Database;
 using Xamarin.Forms;
 
 namespace cryptolletfdm
 {
-    public partial class App : Application
+    public partial class App : Xamarin.Forms.Application
     {
         public static IContainer Container;
 
@@ -18,8 +20,9 @@ namespace cryptolletfdm
             builder.RegisterAssemblyTypes(dataAccess)
                    .AsImplementedInterfaces()
                    .AsSelf();
-            //TODO - register repositories if you use them
+            // Keeping the line below so I can remember that I an use this User instead of transaction
             //builder.RegisterType<Repository<User>>().As<IRepository<User>>();
+            builder.RegisterType<Repository<Transaction>>().As<IRepository<Transaction>>();
 
             //get container
             Container = builder.Build();

@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Transactions;
 using System.Windows.Input;
-using Cryptollet.Common.Base;
+using cryptolletfdm.Common.Base;
 using cryptolletfdm.Common.Controllers;
 using cryptolletfdm.Common.Models;
+using cryptolletfdm.Common.Navigation;
+using cryptolletfdm.Modules.AddTransaction;
 using Microcharts;
 using SkiaSharp;
 using Xamarin.Forms;
@@ -16,14 +17,13 @@ namespace cryptolletfdm.Modules.Wallet
 {
     public class WalletViewModel : BaseViewModel
     {
-        //private INavigationService _navigationService;
+        private INavigationService _navigationService;
         private IWalletController _walletController;
 
-        public WalletViewModel(IWalletController walletController)
-        //public WalletViewModel(INavigationService navigationService,
-       //                        )
+        public WalletViewModel(INavigationService navigationService,
+                               IWalletController walletController)
         {
-           // _navigationService = navigationService;
+            _navigationService = navigationService;
             _walletController = walletController;
             Assets = new ObservableCollection<Coin>();
             LatestTransactions = new ObservableCollection<Transaction>();
@@ -151,12 +151,12 @@ namespace cryptolletfdm.Modules.Wallet
         }
 
         public ICommand RefreshAssetsCommand { get => new Command(async () => await InitializeAsync(true)); }
-        //public ICommand AddNewTransactionCommand { get => new Command(async () => await AddNewTransaction()); }
+        public ICommand AddNewTransactionCommand { get => new Command(async () => await AddNewTransaction()); }
 
-        /*private async Task AddNewTransaction()
+        private async Task AddNewTransaction()
         {
             await _navigationService.PushAsync<AddTransactionViewModel>();
         }
-        */
     }
 }
+

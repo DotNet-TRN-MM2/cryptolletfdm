@@ -2,8 +2,22 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="cryptolletfdm.Modules.Transactions.TransactionsView">
+    x:Class="cryptolletfdm.Modules.Transactions.TransactionsView"
+    Title="Transactions">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add"
+                Order="Primary"
+                Priority="0"
+                Command="{Binding TradeCommand}" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        
+        <RefreshView IsRefreshing="{Binding IsRefreshing}"
+                     Command="{Binding RefreshTransactionsCommand}">
+        <CollectionView ItemsSource="{Binding Transactions}"
+                        SelectionMode="Single"
+                        ItemTemplate="{StaticResource TransactionCell}"
+                        SelectedItem="{Binding SelectedTransaction}"
+                        SelectionChangedCommand="{Binding TransactionSelectedCommand}"/>
+        </RefreshView>
     </ContentPage.Content>
 </ContentPage>

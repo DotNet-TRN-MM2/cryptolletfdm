@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using cryptolletfdm.Application;
+using cryptolletfdm.Common.Database;
 using cryptolletfdm.Common.Models;
+using cryptolletfdm.Common.Network;
 
 namespace cryptolletfdm.Common.Controllers
 {
@@ -15,6 +17,10 @@ namespace cryptolletfdm.Common.Controllers
 
     public class WalletController : IWalletController
     {
+        private IRepository<Transaction> _transactionRepository;
+        private ICryptoService _cryptoService;
+        //private IUserPreferences _userPreferences;
+        private List<Coin> _cachedCoins = new List<Coin>();
         private List<Coin> _defaultAssets = new List<Coin>
         {
                 new Coin
@@ -38,44 +44,75 @@ namespace cryptolletfdm.Common.Controllers
                     Symbol = "LTC",
                     DollarValue = 0
                 },
-        }
+        };
 
-        public Task<List<Transaction>> GetTransactions(bool forceReload = false)
+        //public WalletController(IRepository<Transaction> transactionRepository,
+       //                         ICryptoService cryptoService,
+       //                         IUserPreferences userPreferences)
+        public WalletController(IRepository<Transaction> transactionRepository,
+                                ICryptoService cryptoService)
         {
-            return Task.FromResult(new List<Transaction>
-            {
-                new Transaction
-                {
-                    Amount = 1,
-                    DollarValue=9500,
-                    Status = Constants.TRANSACTION_DEPOSITED,
-                    StatusImageSource = Constants.TRANSACTION_DEPOSITED_IMAGE,
-                    Symbol = "BTC",
-                    TransactionDate = DateTime.Now
-                },
-                new Transaction
-                {
-                    Amount = 2,
-                    DollarValue=600,
-                    Status = Constants.TRANSACTION_DEPOSITED,
-                    StatusImageSource = Constants.TRANSACTION_DEPOSITED_IMAGE,
-                    Symbol = "ETH",
-                    TransactionDate = DateTime.Now
-                },
-                new Transaction
-                {
-                    Amount = 3,
-                    DollarValue=150,
-                    Status = Constants.TRANSACTION_DEPOSITED,
-                    StatusImageSource = Constants.TRANSACTION_DEPOSITED_IMAGE,
-                    Symbol = "LTC",
-                    TransactionDate = DateTime.Now
-                },
-
-            });
-
+            _transactionRepository = transactionRepository;
+            _cryptoService = cryptoService;
+           // _userPreferences = userPreferences;
         }
 
+        public async Task<List<Coin>> GetCoins(bool forceReload = false)
+        {
+            List<Transaction> transactions = await LoadTransactions(forceReload);
+
+            if (transactions.Count == 0 || _cachedCoins.Count == 0)
+            {
+                return _defaultAssets;
+            }
+            var groupedTransactions = transactions.GroupBy(x => x.Symbol);
+            var result = new List<Coin>();
+            foreach (var item in groupedTransactions)
+            {
+                var amount = item.Where(x => x.Status == Constants.TRANSACTION_DEPOSITED).Sum(x => x.Amount)
+                                - item.Where(x => x.Status == Constants.TRANSACTION_WITHDRAWN).Sum(x => x.Amount);
+                var newCoin = new Coin
+                {
+                    Symbol = item.Key,
+                    Amount = amount,
+                    DollarValue = amount * (decimal)_cachedCoins.FirstOrDefault(x => x.Symbol == item.Key).Price,
+                    Name = Coin.GetAvailableAssets().First(x => x.Symbol == item.Key).Name
+                };
+                result.Add(newCoin);
+            }
+            return result.OrderByDescending(x => x.DollarValue).ToList();
+        }
+
+        public async Task<List<Transaction>> GetTransactions(bool forceReload = false)
+        {
+            List<Transaction> transactions = await LoadTransactions(forceReload);
+            if (transactions.Count == 0 || _cachedCoins.Count == 0)
+            {
+                return transactions;
+            }
+            transactions.ForEach(t =>
+            {
+                t.StatusImageSource = t.Status == Constants.TRANSACTION_DEPOSITED ?
+                                        Constants.TRANSACTION_DEPOSITED_IMAGE :
+                                        Constants.TRANSACTION_WITHDRAWN_IMAGE;
+                t.DollarValue = t.Amount * (decimal)_cachedCoins.First(x => x.Symbol == t.Symbol).Price;
+            });
+            return transactions;
+        }
+
+        private async Task<List<Transaction>> LoadTransactions(bool forceReload)
+        {
+            if (_cachedCoins.Count == 0 || forceReload)
+            {
+                _cachedCoins = await _cryptoService.GetLatestPrices();
+            }
+            //var currentUser = _userPreferences.Get(Constants.USER_ID, string.Empty);
+            var transactions = await _transactionRepository.GetAllAsync();
+            //transactions = transactions.Where(x => x.UserEmail == currentUser)
+            //                .OrderByDescending(x => x.TransactionDate).ToList();
+            transactions = transactions.OrderByDescending(x => x.TransactionDate).ToList();
+            return transactions;
+        }
     }
 }
 

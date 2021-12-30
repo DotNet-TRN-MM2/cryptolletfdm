@@ -17,7 +17,7 @@ namespace cryptolletfdm.Modules.Wallet
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            await (BindingContext as WalletViewModel).InitializeAsync(null);
+            await (BindingContext as WalletViewModel).InitializeAsync(false);
         }
     }
 }

@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using cryptolletfdm.Common.Database;
 using Newtonsoft.Json;
 
 namespace cryptolletfdm.Common.Models
 {
 
-    public class Coin
+    public class Coin : BaseDatabaseItem
     {
         public Coin(string name, string symbol, string imageUrl, string color)
         {
@@ -17,13 +18,9 @@ namespace cryptolletfdm.Common.Models
 
         public Coin() { }
 
-        [JsonProperty("id")]
         public int CoinId { get; set; }
-        [JsonProperty("name")]
         public string Name { get; set; }
-        [JsonProperty("symbol")]
         public string Symbol { get; set; }
-        [JsonProperty("price")]
         public double Price { get; set; }
         public decimal Amount { get; set; }
         public decimal DollarValue { get; set; }
