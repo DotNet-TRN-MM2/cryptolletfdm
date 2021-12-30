@@ -1,0 +1,46 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2291" />  
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
+    <PackageReference Include="Autofac" Version="6.3.0" />
+    <PackageReference Include="Microcharts" Version="0.9.5.9" />
+    <PackageReference Include="Microcharts.Forms" Version="0.9.5.9" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Application\" />
+    <None Remove="Common\" />
+    <None Remove="Modules\" />
+    <None Remove="Modules\Wallet\" />
+    <None Remove="Modules\Assets\" />
+    <None Remove="Modules\Transactions\" />
+    <None Remove="Common\Controls\" />
+    <None Remove="Common\Styles\" />
+    <None Remove="Autofac" />
+    <None Remove="Microcharts" />
+    <None Remove="Microcharts.Forms" />
+    <None Remove="Common\Base\" />
+    <None Remove="Common\Models\" />
+    <None Remove="Newtonsoft.Json" />
+    <None Remove="Common\Controllers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Application\" />
+    <Folder Include="Common\" />
+    <Folder Include="Modules\" />
+    <Folder Include="Modules\Wallet\" />
+    <Folder Include="Modules\Assets\" />
+    <Folder Include="Modules\Transactions\" />
+    <Folder Include="Common\Controls\" />
+    <Folder Include="Common\Styles\" />
+    <Folder Include="Common\Base\" />
+    <Folder Include="Common\Models\" />
+    <Folder Include="Common\Controllers\" />
+  </ItemGroup>
+</Project>
