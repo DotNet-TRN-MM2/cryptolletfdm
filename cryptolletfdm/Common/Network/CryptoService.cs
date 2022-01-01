@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using cryptolletfdm.Application;
 using cryptolletfdm.Common.Models;
 
 namespace cryptolletfdm.Common.Network

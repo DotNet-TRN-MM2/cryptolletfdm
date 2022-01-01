@@ -1,5 +1,5 @@
 ﻿using System;
-namespace cryptolletfdm.Application
+namespace cryptolletfdm
 {
     public class Constants
     {

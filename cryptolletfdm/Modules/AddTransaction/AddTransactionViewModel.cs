@@ -3,7 +3,6 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using cryptolletfdm.Application;
 using cryptolletfdm.Common.Base;
 using cryptolletfdm.Common.Database;
 using cryptolletfdm.Common.Dialog;

@@ -73,45 +73,6 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon1024.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon180.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon167.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon152.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon120.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon87.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon80.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon76.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon60.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon58.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon40.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon29.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon20.png">
-      <Visible>false</Visible>
-    </ImageAsset>
     <BundleResource Include="Resources\icon_about.png" />
     <BundleResource Include="Resources\icon_about%402x.png" />
     <BundleResource Include="Resources\icon_about%403x.png" />
@@ -130,8 +91,6 @@
     <ImageAsset Include="Assets.xcassets\DASH.png.imageset\DASH.pdf" />
     <ImageAsset Include="Assets.xcassets\all_tab.png.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\all_tab.png.imageset\all_tab.pdf" />
-    <ImageAsset Include="Assets.xcassets\depositd_tab.png.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\depositd_tab.png.imageset\deposited_tab.pdf" />
     <ImageAsset Include="Assets.xcassets\deposited.png.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\deposited.png.imageset\deposited.pdf" />
     <ImageAsset Include="Assets.xcassets\ETH.png.imageset\Contents.json" />
@@ -164,6 +123,16 @@
     <ImageAsset Include="Assets.xcassets\XMR.png.imageset\XMR.pdf" />
     <ImageAsset Include="Assets.xcassets\XRP.png.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\XRP.png.imageset\XRP.pdf" />
+    <ImageAsset Include="Assets.xcassets\deposited_tab.png.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\deposited_tab.png.imageset\deposited_tab.pdf" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-20x20%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-20x20%403x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-29x29%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-60x60%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-60x60%403x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-40x40%403x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-40x40%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-29x29%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -218,5 +187,6 @@
     <Folder Include="Assets.xcassets\XLM.png.imageset\" />
     <Folder Include="Assets.xcassets\XMR.png.imageset\" />
     <Folder Include="Assets.xcassets\XRP.png.imageset\" />
+    <Folder Include="Assets.xcassets\deposited_tab.png.imageset\" />
   </ItemGroup>
 </Project>

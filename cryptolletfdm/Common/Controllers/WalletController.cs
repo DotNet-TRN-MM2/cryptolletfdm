@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using cryptolletfdm.Application;
 using cryptolletfdm.Common.Database;
 using cryptolletfdm.Common.Models;
 using cryptolletfdm.Common.Network;

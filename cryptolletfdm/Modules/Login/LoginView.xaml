@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="cryptolletfdm.Modules.Login.LoginView"
+             xmlns:converters="clr-namespace:cryptolletfdm.Common.Converters"
+             xmlns:locale="clr-namespace:cryptolletfdm.Common.Localization"
+             Shell.NavBarIsVisible="False"
+             Shell.FlyoutBehavior="Disabled">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:FirstValidationErrorConverter x:Key="FirstValidationErrorConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="{StaticResource LightBlueBackground}"
+                     Padding="0,70,0,0">
+            <Label Style="{StaticResource TitleLabel}"
+                   Text="{x:Static locale:Resources.Login_WelcomeBack}"/>
+            <Image Source="login.png"
+                   Margin="0,30,0,0"
+                   HeightRequest="200"></Image>
+            <StackLayout BackgroundColor="White"
+                         VerticalOptions="FillAndExpand">
+                <Entry Style="{StaticResource Input}"
+                       Placeholder="{x:Static locale:Resources.Login_Email}"
+                       Keyboard="Email"
+                       Text="{Binding Email.Value, Mode=TwoWay}"
+                       Margin="24,30,24,0" />
+                <Label Text="{Binding Email.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+					   Style="{StaticResource ValidationErrorLabel}"
+                       Margin="26,0,24,10"/>
+
+                <Entry Style="{StaticResource Input}"
+                       Placeholder="{x:Static locale:Resources.Login_Password}"
+                       Text="{Binding Password.Value, Mode=TwoWay}"
+                       Margin="24,0,24,0"
+                       IsPassword="True"/>
+                <Label Text="{Binding Password.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+					   Style="{StaticResource ValidationErrorLabel}"
+                       Margin="26,0,24,10"/>
+
+                <StackLayout IsVisible="{Binding IsBusy}">
+                <Image Source="loading.gif"
+                       IsAnimationPlaying="True"
+                       WidthRequest="80"
+                       HeightRequest="80"/>
+                <Label Text="Loading..."
+                       HorizontalTextAlignment="Center"
+                       TextColor="{StaticResource InputText}"/>
+                </StackLayout>
+
+                <StackLayout HorizontalOptions="Center"
+                             VerticalOptions="EndAndExpand"
+                             Margin="0,0,0,80">
+                    <Button Style="{StaticResource BlueButton}"
+                            Text="Login"
+                            VerticalOptions="EndAndExpand"
+                            Command="{Binding LoginCommand}"/>
+                    <Button Style="{StaticResource NoBackgroundSmallButton}"
+                            Text="Don't have an account? Sign up"
+                            Command="{Binding RegisterCommand}"/>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

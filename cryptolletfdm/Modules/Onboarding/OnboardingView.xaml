@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="cryptolletfdm.Modules.Onboarding.OnboardingView"
+    Shell.NavBarIsVisible="False"
+    Shell.FlyoutBehavior="Disabled">
+
+    <ContentPage.Content>
+        <StackLayout
+                     VerticalOptions="StartAndExpand"
+                     BackgroundColor="{StaticResource LightBlueBackground}">
+            <Grid>
+            <CarouselView ItemsSource="{Binding OnboardingSteps}"
+                          HorizontalScrollBarVisibility="Never"
+                  IndicatorView="indicatorView">
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                                    <Image Source="{Binding ImageUrl}" 
+                                           Aspect="AspectFit"
+                                           HeightRequest="270"
+                                           Margin="0,80,0,0"
+                                           HorizontalOptions="Center" />
+                            <StackLayout BackgroundColor="White"
+                                         VerticalOptions="FillAndExpand">
+                                    <Label Text="{Binding Title}"
+                                           FontSize="38"
+                                           FontAttributes="Bold"
+                                           HorizontalOptions="Center"
+                                           HorizontalTextAlignment="Center"
+                                           MaxLines="5"
+                                           Margin="20,50,20,0"
+                                           LineBreakMode="TailTruncation"
+                                           TextColor="Black"/>
+                                    <Label Text="{Binding Details}"
+                                           FontSize="Body"
+                                           TextColor="{StaticResource DetailsText}"
+                                           HorizontalOptions="Center"
+                                           HorizontalTextAlignment="Center"
+                                           MaxLines="5"
+                                           Margin="20"
+                                           LineBreakMode="TailTruncation" />
+                                </StackLayout>
+                        </StackLayout>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+            <Button Text="Skip"
+                    FontSize="20"
+                    TextColor="{StaticResource PrimaryBlue}"
+                    VerticalOptions="Start"
+                    HorizontalOptions="End"
+                    BackgroundColor="Transparent"
+                    Margin="0,50,20,0"
+                    Command="{Binding SkipCommand}"
+                    />
+            <IndicatorView x:Name="indicatorView"
+                IndicatorColor="{StaticResource CellBackground}"
+                IndicatorSize="10"
+                SelectedIndicatorColor="{StaticResource PrimaryBlue}"
+                HorizontalOptions="Center"
+                VerticalOptions="End"
+                Margin="0,0,0,50"/>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
